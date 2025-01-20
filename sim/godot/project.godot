@@ -10,6 +10,6 @@ config_version=5
 
 [application]
 
-config/name="godot"
+config/name="fpga_vision_sim"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://2025941.webp"
