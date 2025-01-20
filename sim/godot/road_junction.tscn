@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs743tocqf3bn"]
+
+[ext_resource type="PackedScene" uid="uid://esmioyir4g0r" path="res://Assets/gltf/road_junction.gltf" id="1_i7a6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trg4n"]
+size = Vector3(2, 1.65181, 2)
+
+[node name="Road Junction" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="road_junction2" parent="Pivot" instance=ExtResource("1_i7a6c")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.823509, 0)
+shape = SubResource("BoxShape3D_trg4n")

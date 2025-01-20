@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt164c3hb8ywo"]
+
+[ext_resource type="PackedScene" uid="uid://g4lrlkiaovts" path="res://Assets/gltf/road_straight.gltf" id="1_ew0gn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trg4n"]
+size = Vector3(2, 1.65181, 2)
+
+[node name="Road Straight" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="road_straight2" parent="Pivot" instance=ExtResource("1_ew0gn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.823509, 0)
+shape = SubResource("BoxShape3D_trg4n")

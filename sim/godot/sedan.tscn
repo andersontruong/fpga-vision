@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqgiaibtv2a53"]
+
+[ext_resource type="PackedScene" uid="uid://x8l110csmmte" path="res://Assets/gltf/car_sedan.gltf" id="1_rcbgx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3hkru"]
+size = Vector3(0.3, 0.4, 0.9)
+
+[node name="Sedan" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Model" parent="Pivot" instance=ExtResource("1_rcbgx")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172987, 0)
+shape = SubResource("BoxShape3D_3hkru")

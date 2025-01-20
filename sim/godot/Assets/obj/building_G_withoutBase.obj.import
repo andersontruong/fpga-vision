@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfjsjhol73asp"
+path="res://.godot/imported/building_G_withoutBase.obj-5175eeb3acad5f01babab4adcae83a73.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building_G_withoutBase.obj-5175eeb3acad5f01babab4adcae83a73.mesh"]
+
+source_file="res://Assets/obj/building_G_withoutBase.obj"
+dest_files=["res://.godot/imported/building_G_withoutBase.obj-5175eeb3acad5f01babab4adcae83a73.mesh", "res://.godot/imported/building_G_withoutBase.obj-5175eeb3acad5f01babab4adcae83a73.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
