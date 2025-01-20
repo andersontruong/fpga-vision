@@ -39,7 +39,7 @@
 ## :white_square_button: Godot initial project structure
 - Set up basic Godot project structure
 - Set up assets
-## :x: Godot basic city scene
+## :white_check_mark: Godot basic city scene
 - Add roads, traffic signs/lights, sidewalks, buildings, trees, vehicles
 ## :x: Godot vehicle controls
 - Add user controls for vehicle
