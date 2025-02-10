@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbtcak4cxo1bx"]
+
+[ext_resource type="PackedScene" uid="uid://cedd6qt6o2vu2" path="res://Assets/gltf/building_C.gltf" id="1_w15br"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trg4n"]
+size = Vector3(2, 1.65181, 2)
+
+[node name="Building C" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="building_C2" parent="Pivot" instance=ExtResource("1_w15br")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.823509, 0)
+shape = SubResource("BoxShape3D_trg4n")

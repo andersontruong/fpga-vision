@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfauoti682si0"]
+
+[ext_resource type="PackedScene" uid="uid://cywwfn31pec6a" path="res://Assets/gltf/road_corner.gltf" id="1_utkvh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trg4n"]
+size = Vector3(2, 1.65181, 2)
+
+[node name="Road Corner" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="road_corner2" parent="Pivot" instance=ExtResource("1_utkvh")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.823509, 0)
+shape = SubResource("BoxShape3D_trg4n")

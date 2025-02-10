@@ -1,0 +1,5 @@
+# dataset.yaml
+train: ../data/images/train  # Path to training images
+val: ../data/images/val      # Path to validation images
+nc: 3                        # Number of classes (adjust as needed)
+names: ['class1', 'class2', 'class3']  # List of class names

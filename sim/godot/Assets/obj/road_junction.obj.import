@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgnvti7s5nmah"
+path="res://.godot/imported/road_junction.obj-26524cc080a9de066f60c0c487b166fc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/road_junction.obj-26524cc080a9de066f60c0c487b166fc.mesh"]
+
+source_file="res://Assets/obj/road_junction.obj"
+dest_files=["res://.godot/imported/road_junction.obj-26524cc080a9de066f60c0c487b166fc.mesh", "res://.godot/imported/road_junction.obj-26524cc080a9de066f60c0c487b166fc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
