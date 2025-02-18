@@ -2,3 +2,7 @@
 data/
 .DS_Store
 .venv/
+
+# Ignore dataset directory
+100k/
+100k_labels/

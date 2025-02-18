@@ -1,0 +1,15 @@
+# 100k.yaml
+train: /Users/henry/fpga-vision/yolo/100k/test
+val: /Users/henry/fpga-vision/yolo/100k/train
+test: /Users/henry/fpga-vision/yolo/100k/val
+
+names:
+  0: traffic sign
+  1: car
+  2: person
+  3: area/driveable
+  4: area/alternative
+  5: lane/road curb
+  6: lane/single white
+
+  
