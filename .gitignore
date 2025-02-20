@@ -6,3 +6,6 @@ data/
 # Ignore dataset directory
 100k/
 100k_labels/
+10k/
+10k_labels/
+
