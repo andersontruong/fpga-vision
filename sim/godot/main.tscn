@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxvtywp5yeey1"]
+[gd_scene load_steps=20 format=3 uid="uid://dxvtywp5yeey1"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_dhpeb"]
 [ext_resource type="PackedScene" uid="uid://dqgiaibtv2a53" path="res://sedan.tscn" id="1_dkj5c"]
 [ext_resource type="PackedScene" uid="uid://g4lrlkiaovts" path="res://Assets/gltf/road_straight.gltf" id="2_8llrv"]
 [ext_resource type="PackedScene" uid="uid://esmioyir4g0r" path="res://Assets/gltf/road_junction.gltf" id="3_ts64b"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://csq6dw8pqngdv" path="res://Assets/gltf/streetlight.gltf" id="12_brb6c"]
 [ext_resource type="PackedScene" uid="uid://bjcvqeydxnrva" path="res://Assets/gltf/trafficlight_C.gltf" id="13_tlrff"]
 [ext_resource type="PackedScene" uid="uid://crau52elxgmyu" path="res://Assets/gltf/car_police.gltf" id="14_e16bo"]
+[ext_resource type="Script" path="res://sum.gd" id="16_talx5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufi0c"]
 
@@ -25,6 +27,7 @@ material = SubResource("ORMMaterial3D_ou8bs")
 size = Vector3(60, 0, 60)
 
 [node name="Node" type="Node"]
+script = ExtResource("1_dhpeb")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
@@ -211,3 +214,6 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.06771,
 
 [node name="car_police2" parent="Cars" instance=ExtResource("14_e16bo")]
 transform = Transform3D(-0.999847, 0, -0.0174699, 0, 1, 0, 0.0174699, 0, -0.999847, -0.259924, 0.122749, 7.30418)
+
+[node name="sum" type="sum" parent="."]
+script = ExtResource("16_talx5")
