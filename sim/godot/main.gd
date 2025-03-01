@@ -1,10 +1,9 @@
 extends Node
 
-var parent_num1 : int = 7
-var parent_num2 : int = 8
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var arr1 = [1,2,3,4]
+	var arr2 = [2,3,4,5]
+	$sum.add(arr1, arr2)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

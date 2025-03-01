@@ -3,6 +3,7 @@
 
 #include <godot_cpp/variant/typed_array.hpp>
 #include <godot_cpp/classes/node.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
 
 namespace godot {
 
@@ -16,7 +17,7 @@ public:
 	sum();
 	~sum();
 
-  void sum_func(int num1, int num2) override;
+  void add(TypedArray<uint8_t> arr1, TypedArray<uint8_t> arr2);
 };
 
 }

@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://csq6dw8pqngdv" path="res://Assets/gltf/streetlight.gltf" id="12_brb6c"]
 [ext_resource type="PackedScene" uid="uid://bjcvqeydxnrva" path="res://Assets/gltf/trafficlight_C.gltf" id="13_tlrff"]
 [ext_resource type="PackedScene" uid="uid://crau52elxgmyu" path="res://Assets/gltf/car_police.gltf" id="14_e16bo"]
-[ext_resource type="Script" path="res://sum.gd" id="16_talx5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufi0c"]
 
@@ -25,6 +24,18 @@ albedo_color = Color(0.211765, 0.537255, 0.121569, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_tn55n"]
 material = SubResource("ORMMaterial3D_ou8bs")
 size = Vector3(60, 0, 60)
+
+[sub_resource type="GDScript" id="GDScript_mbuil"]
+script/source = "extends Node
+	
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+	
+# Called every var n1 = get_parent().parent_num1
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="Node" type="Node"]
 script = ExtResource("1_dhpeb")
@@ -216,4 +227,4 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.06771,
 transform = Transform3D(-0.999847, 0, -0.0174699, 0, 1, 0, 0.0174699, 0, -0.999847, -0.259924, 0.122749, 7.30418)
 
 [node name="sum" type="sum" parent="."]
-script = ExtResource("16_talx5")
+script = SubResource("GDScript_mbuil")
