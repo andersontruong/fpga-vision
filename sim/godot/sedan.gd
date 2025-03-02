@@ -1,13 +1,18 @@
 extends CharacterBody3D
 
+var leftCamera
+var rightCamera
 
 # How fast the player moves in meters per second.
-@export var speed = 14
+@export var speed = 5
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
 
 var target_velocity = Vector3.ZERO
 
+func _ready() -> void:
+	leftCamera = get_node("./ViewportLeft/CameraPivotLeft")
+	rightCamera = get_node("./ViewportRight/CameraPivotRight")
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -35,4 +40,12 @@ func _physics_process(delta):
 
 	# Moving the Character
 	velocity = target_velocity
+	var oldPos = global_position
 	move_and_slide()
+	var curPos = global_position
+	var diff = curPos - oldPos
+	#var left_diff : Vector3 = global_position - leftCamera.global_position
+	#var right_diff : Vector3 = global_position - rightCamera.global_position
+	##print(global_position)
+	leftCamera.global_position += diff
+	rightCamera.global_position += diff

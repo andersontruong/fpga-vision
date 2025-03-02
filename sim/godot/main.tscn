@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dxvtywp5yeey1"]
+[gd_scene load_steps=27 format=3 uid="uid://dxvtywp5yeey1"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dhpeb"]
 [ext_resource type="PackedScene" uid="uid://dqgiaibtv2a53" path="res://sedan.tscn" id="1_dkj5c"]
 [ext_resource type="PackedScene" uid="uid://g4lrlkiaovts" path="res://Assets/gltf/road_straight.gltf" id="2_8llrv"]
+[ext_resource type="Shader" path="res://floor.gdshader" id="2_inxg2"]
+[ext_resource type="Script" path="res://multi_mesh_instance_3d.gd" id="3_gtgbg"]
 [ext_resource type="PackedScene" uid="uid://esmioyir4g0r" path="res://Assets/gltf/road_junction.gltf" id="3_ts64b"]
 [ext_resource type="PackedScene" uid="uid://3pg5y5i1m7t8" path="res://Assets/gltf/building_A.gltf" id="4_qkgcw"]
 [ext_resource type="PackedScene" uid="uid://d2463icqcjsna" path="res://Assets/gltf/road_tsplit.gltf" id="4_te68q"]
@@ -18,11 +20,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufi0c"]
 
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_ou8bs"]
-albedo_color = Color(0.211765, 0.537255, 0.121569, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqikj"]
+shader = ExtResource("2_inxg2")
+shader_parameter/size = 13.274
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/color2 = Color(0.0885598, 0.0885599, 0.0885599, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tn55n"]
-material = SubResource("ORMMaterial3D_ou8bs")
+material = SubResource("ShaderMaterial_kqikj")
 size = Vector3(60, 0, 60)
 
 [sub_resource type="GDScript" id="GDScript_mbuil"]
@@ -36,6 +41,30 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 "
+
+[sub_resource type="Environment" id="Environment_ce5fj"]
+background_mode = 2
+
+[sub_resource type="Environment" id="Environment_8o4ux"]
+background_mode = 2
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_sxcrv"]
+mie_coefficient = 0.056
+mie_color = Color(0.854547, 0.87423, 0.915799, 1)
+turbidity = 0.0
+sun_disk_scale = 0.0
+ground_color = Color(0.868446, 0.770708, 0.657477, 1)
+
+[sub_resource type="Sky" id="Sky_4l215"]
+sky_material = SubResource("PhysicalSkyMaterial_sxcrv")
+
+[sub_resource type="Environment" id="Environment_gjpj8"]
+background_mode = 2
+sky = SubResource("Sky_4l215")
+ambient_light_source = 3
+ambient_light_color = Color(0.683963, 0.789043, 0.999999, 0.517647)
+ambient_light_energy = 2.3
+reflected_light_source = 2
 
 [node name="Node" type="Node"]
 script = ExtResource("1_dhpeb")
@@ -54,17 +83,46 @@ mesh = SubResource("BoxMesh_tn55n")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 29, 0)
 
 [node name="Driveable Sedan" parent="." instance=ExtResource("1_dkj5c")]
-transform = Transform3D(-0.999946, 0, -0.0104193, 0, 1, 0, 0.0104193, 0, -0.999946, 0.295951, 0.144857, 9.38672)
+transform = Transform3D(-0.999946, 0, -0.0104193, 0, 1, 0, 0.0104193, 0, -0.999946, 0.315, 0.13, 9.478)
 
-[node name="CameraPivotRight" type="Marker3D" parent="Driveable Sedan"]
-transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, -0.2, 0.2, 0.4)
+[node name="PointCloud" type="MultiMeshInstance3D" parent="Driveable Sedan"]
+layers = 2
+script = ExtResource("3_gtgbg")
 
-[node name="CameraRight" type="Camera3D" parent="Driveable Sedan/CameraPivotRight"]
+[node name="sum" type="sum" parent="Driveable Sedan"]
+script = SubResource("GDScript_mbuil")
 
-[node name="CameraPivotLeft" type="Marker3D" parent="Driveable Sedan"]
-transform = Transform3D(-1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0.2, 0.2, 0.4)
+[node name="ViewportLeft" type="SubViewport" parent="Driveable Sedan"]
+size = Vector2i(224, 128)
+render_target_clear_mode = 2
+render_target_update_mode = 3
 
-[node name="CameraLeft" type="Camera3D" parent="Driveable Sedan/CameraPivotLeft"]
+[node name="CameraPivotLeft" type="Marker3D" parent="Driveable Sedan/ViewportLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.110843, 0.494024, 9.08006)
+
+[node name="CameraLeft" type="Camera3D" parent="Driveable Sedan/ViewportLeft/CameraPivotLeft"]
+transform = Transform3D(1, -2.32831e-10, -9.31323e-10, 2.32831e-10, 1, 1.04308e-07, 9.31323e-10, 1.49012e-08, 1, 0, 0, 0)
+cull_mask = 1048573
+environment = SubResource("Environment_ce5fj")
+
+[node name="ViewportRight" type="SubViewport" parent="Driveable Sedan"]
+size = Vector2i(224, 128)
+render_target_clear_mode = 2
+render_target_update_mode = 3
+
+[node name="CameraPivotRight" type="Marker3D" parent="Driveable Sedan/ViewportRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.511, 0.495, 9.08)
+
+[node name="CameraRight" type="Camera3D" parent="Driveable Sedan/ViewportRight/CameraPivotRight"]
+transform = Transform3D(1, -2.32831e-10, -9.31323e-10, 2.32831e-10, 1, 1.3411e-07, 9.31323e-10, 1.49012e-08, 1, 0, 0, 0)
+cull_mask = 1048573
+environment = SubResource("Environment_8o4ux")
+
+[node name="CameraPivotMain" type="Marker3D" parent="Driveable Sedan"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.201192, 0.370572, 0.409218)
+
+[node name="CameraMain" type="Camera3D" parent="Driveable Sedan/CameraPivotMain"]
+transform = Transform3D(1, -2.32831e-10, -9.31323e-10, 2.32831e-10, 1, -1.49012e-08, 0, 1.49012e-08, 0.999999, -0.000118054, 0, 0.0113297)
 
 [node name="Roads" type="Node3D" parent="."]
 
@@ -226,5 +284,5 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 1.06771,
 [node name="car_police2" parent="Cars" instance=ExtResource("14_e16bo")]
 transform = Transform3D(-0.999847, 0, -0.0174699, 0, 1, 0, 0.0174699, 0, -0.999847, -0.259924, 0.122749, 7.30418)
 
-[node name="sum" type="sum" parent="."]
-script = SubResource("GDScript_mbuil")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gjpj8")

@@ -17,7 +17,7 @@ public:
 	sum();
 	~sum();
 
-  void add(TypedArray<uint8_t> arr1, TypedArray<uint8_t> arr2);
+  PackedByteArray add(PackedByteArray arr1, PackedByteArray arr2);
 };
 
 }
